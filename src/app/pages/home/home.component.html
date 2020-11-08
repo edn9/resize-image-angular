@@ -1,0 +1,64 @@
+<div class="container">
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <div class="centerIt">
+                <label>Resize Image</label>
+                <input style="display: none" #inputFile type="file" accept="image/*"
+                    (change)="fileChangeInsert($event)">
+                <button class="btn btn-primary" (click)="getImage()">Get</button>
+            </div>
+
+            <hr>
+            <div *ngIf="image.img">
+                <div class="grid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>Original Image - {{image.name}}</label><br>
+                            <label>Display {{image.display}}</label><br>
+                            <label>Size - {{image.size}} KB</label><br>
+                            <label>Format - {{image.type}}</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="centerIt" style="justify-content: center;flex-direction: column;">
+                                <img style="width: 25%;" [src]="image.img" alt="Image">
+                                <a [href]="image.img" download="{{image.name}}">
+                                    <button class="btn btn-outline-dark" style="border: none;">
+                                        Download
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <hr *ngIf="resizedImage.img">
+            <div *ngIf="resizedImage.img">
+                <div class="grid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>Resized Image - {{image.name}}</label><br>
+                            <label>Display {{resizedImage.display}}</label><br>
+                            <label>Size - {{resizedImage.size}} KB</label><br>
+                            <label>Format - {{resizedImage.type}}</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="centerIt" style="justify-content: center; flex-direction: column;">
+                                <img style="width: 25%;" [src]="resizedImage.img" alt="Image Resized">
+                                <a [href]="image.img" download="resized-{{image.name}}">
+                                    <button class="btn btn-outline-dark" style="border: none;">
+                                        Download
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
